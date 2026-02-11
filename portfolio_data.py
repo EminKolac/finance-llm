@@ -3,13 +3,17 @@ Portfolio Data Processing Module
 Reads TVF Portfolio Excel and computes all metrics for the dashboard
 """
 
+import os
 import pandas as pd
 import numpy as np
 import json
 from datetime import datetime
 
+_BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+_DEFAULT_EXCEL = os.path.join(_BASE_DIR, "TVF Portfolio V4.xlsx")
 
-def load_portfolio_data(excel_path="TVF Portfolio V4.xlsx"):
+
+def load_portfolio_data(excel_path=_DEFAULT_EXCEL):
     """Load and process all portfolio data from Excel file"""
     xls = pd.ExcelFile(excel_path)
 
@@ -344,7 +348,7 @@ def compute_sector_summary(holdings):
     return result
 
 
-def get_all_dashboard_data(excel_path="TVF Portfolio V4.xlsx"):
+def get_all_dashboard_data(excel_path=_DEFAULT_EXCEL):
     """Main function to get all dashboard data as JSON-serializable dict"""
     data = load_portfolio_data(excel_path)
     holdings = compute_holdings_table(data)
