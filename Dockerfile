@@ -13,4 +13,4 @@ COPY . .
 EXPOSE 8080
 
 # Run with gunicorn for production
-CMD ["gunicorn", "--bind", "0.0.0.0:8080", "--workers", "2", "--timeout", "120", "web_app:app"]
+CMD ["gunicorn", "--bind", "0.0.0.0:8080", "--workers", "2", "--timeout", "180", "--preload", "web_app:app"]

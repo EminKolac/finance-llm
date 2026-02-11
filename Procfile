@@ -1,1 +1,1 @@
-web: gunicorn --bind 0.0.0.0:8080 --workers 2 --timeout 120 web_app:app
+web: gunicorn --bind 0.0.0.0:8080 --workers 2 --timeout 180 --preload web_app:app
